@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms validation</title>
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="Forms.js"></script>
+</head>
+<body>
+    <form action="https://sheetdb.io/api/v1/i1yopxssipcq4" method="POST" ID="sheetdb-form">
+        <label for="uname">UserName</label>
+        <label for="uname" style="color: red;">*</label>
+        <input type="text"  id="uname" class ="form-control" name="data[UserName]"> <br>
+        <span id="msg" style="color: red;"></span><br>
+        <label for="email">Email</label>
+        <label for="email" style="color: red;">*</label>
+        <input type="email"  id="email" class ="form-control" name="data[Email]">  <br>
+        <span id="msg" style="color: red;"></span><br>
+        <label for="phnum">phoneNumber</label>
+        <label for="phnum" style="color: red;">*</label>
+        <input type="text"  id="phnum" class ="form-control" name="data[phoneNumber]" >  <br>
+        <span id="msg" style="color: red;"></span><br>
+        <span id="msg1" style="color: red;"></span><br>
+        <label for="pass">Password</label>
+        <label for="pass" style="color: red;">*</label>
+        <input type="password"  id="pass" class ="form-control" name="data[password]">  <br>
+        <span id="msg" style="color: red;"></span><br>
+        <label for="confirmpass">ConfirmPassword</label>
+        <label for="confirmpass" style="color: red;">*</label>
+        <input type="password"  id="confirmpass" class ="form-control" name="data[ConfirmPassword]">  <br>
+        <span id="msg" style="color: red;"></span><br>
+        <input type ="submit" class ="btn btn-primary ">
+        <script>
+            var form=document.getElementById("sheetdb-form")
+            form.addEventListener("submit",e=>{
+                e.preventDefault();
+                fetch(form.action,{
+                    method:"POST",
+                    body: new FormData(document.getElementById("sheetdb-form"))
+                }).then((html) => {
+                    window.open('msg.html','_blank');
+                });
+            })
+        </script>
+    </form> 
+</body>
+</html>
